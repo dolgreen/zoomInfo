@@ -12,24 +12,16 @@ export class UsersTableComponent implements OnInit {
   sortOrder: string = '';
   filterdUsers: User[] = [];
   page: number = 1;
-  pageSize: number = 5;
+  pageSize: number = 10;
   collectionSize: number = this.users.length;
 
   constructor(private usersService: UsersService) {
     this.refreshUsers();
   }
 
-  // onTableSizeChange(event: any): void {
-  //   if (event.target) {
-
-  //     this.pageSize = event.target.value
-
-  //   }
-  // }
-
-  refreshUsers() {
+  refreshUsers(): void {
     this.filterdUsers = this.users
-      .map((user, i) => ({ ...user }))
+      .map((user, index) => ({ ...user, id: index + 1 }))
       .slice(
         (this.page - 1) * this.pageSize,
         (this.page - 1) * this.pageSize + this.pageSize
@@ -39,7 +31,7 @@ export class UsersTableComponent implements OnInit {
   ngOnInit(): void {
     this.usersService.getUsers().subscribe((usersData) => {
       this.users = usersData;
-      this.filterdUsers = usersData;
+      this.refreshUsers();
     });
   }
 

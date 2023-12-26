@@ -45,17 +45,17 @@
       (pageChange)="refreshUsers()"
     >
     </ngb-pagination>
-
-    <select
-      class="form-select"
-      style="width: auto"
-      ngModel="pageSize"
-      (ngModelChange)="refreshUsers()"
-    >
-      <option value="5">5 items per page</option>
-      <option value="10">10 items per page</option>
-      <option value="15">15 items per page</option>
-    </select>
+    <mat-form-field>
+      <mat-select
+        placeholder="Choose table size"
+        [(ngModel)]="pageSize"
+        (ngModelChange)="refreshUsers()"
+      >
+        <mat-option [value]="5">5 </mat-option>
+        <mat-option [value]="10">10</mat-option>
+        <mat-option [value]="15"> 15</mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </div>
 
