@@ -1,0 +1,66 @@
+<div class="container">
+  <h1 class="text-center">User Menegment</h1>
+
+  <div class="filters-container">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event)" placeholder="search" />
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select
+        (selectionChange)="sortUsers($event.value)"
+        placeholder="sort"
+      >
+        <mat-option value="ageLowHigh">Age low high </mat-option>
+        <mat-option value="ageHighLow">Age high low</mat-option>
+        <mat-option value="byName"> a-z</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr class="text-center">
+        <th>#</th>
+        <th>name</th>
+        <th>age</th>
+        <th>company</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of filterdUsers; track $index ) {
+      <tr class="text-center">
+        <th scope="row">{{ $index + 1 }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.age }}</td>
+        <td>{{ user.company }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-between p-2">
+    <ngb-pagination
+      [collectionSize]="collectionSize"
+      [(page)]="page"
+      [pageSize]="pageSize"
+      (pageChange)="refreshUsers()"
+    >
+    </ngb-pagination>
+
+    <select
+      class="form-select"
+      style="width: auto"
+      ngModel="pageSize"
+      (ngModelChange)="refreshUsers()"
+    >
+      <option value="5">5 items per page</option>
+      <option value="10">10 items per page</option>
+      <option value="15">15 items per page</option>
+    </select>
+  </div>
+</div>
+
+@if(users.length ) {
+<div></div>
+} @else {
+<h2 class="text-center">no users available</h2>
+}

@@ -4,9 +4,7 @@ import { ctrlGetUsers } from "../../controllers/users/userController";
 const getUsers: Router = express.Router();
 
 getUsers.get("/", async (req: Request, res: Response) => {
-  console.log(req.body);
-
-  const result = await ctrlGetUsers(req.body.age);
+  const result = await ctrlGetUsers();
   res.send(result);
 });
 
