@@ -5,9 +5,12 @@
 html,
 body {
   height: 100%;
+  overflow-x: hidden;
+  // overflow-y: hidden;
 }
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   background-color: rgb(244, 244, 244);
 }
+

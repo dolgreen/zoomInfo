@@ -5,3 +5,17 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.scroll-table {
+  // overflow-y: auto;
+  // &::-webkit-scrollbar {
+  //   width: 6px;
+  // }
+  // &::-webkit-scrollbar-track {
+  //   background-color: transparent;
+  // }
+  // &::-webkit-scrollbar-thumb {
+  //   background-color: darkgray;
+  //   border-radius: 4px;
+  // }
+}

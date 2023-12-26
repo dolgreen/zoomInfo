@@ -1,12 +1,12 @@
 <div class="container">
-  <h1 class="text-center">User Menegment</h1>
+  <h1 class="text-center text-primary">User Menegment</h1>
 
   <div class="filters-container">
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event)" placeholder="search" />
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="form-field">
       <mat-select
         (selectionChange)="sortUsers($event.value)"
         placeholder="sort"
@@ -17,26 +17,27 @@
       </mat-select>
     </mat-form-field>
   </div>
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr class="text-center">
-        <th>#</th>
-        <th>name</th>
-        <th>age</th>
-        <th>company</th>
-      </tr>
-    </thead>
-    <tbody>
-      @for (user of filterdUsers; track $index ) {
-      <tr class="text-center">
-        <th scope="row">{{ $index + 1 }}</th>
-        <td>{{ user.name }}</td>
-        <td>{{ user.age }}</td>
-        <td>{{ user.company }}</td>
-      </tr>
-      }
-    </tbody>
-  </table>
+    <table class="scroll-table table table-striped table-hover table-bordered">
+      <thead>
+        <tr class="text-center">
+          <th>#</th>
+          <th>name</th>
+          <th>age</th>
+          <th>company</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (user of filterdUsers; track $index ) {
+        <tr class="text-center">
+          <th scope="row">{{ $index + 1 }}</th>
+          <td>{{ user.name }}</td>
+          <td>{{ user.age }}</td>
+          <td>{{ user.company }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
   <div class="d-flex justify-content-between p-2">
     <ngb-pagination
       [collectionSize]="collectionSize"
@@ -57,7 +58,6 @@
       </mat-select>
     </mat-form-field>
   </div>
-</div>
 
 @if(users.length ) {
 <div></div>
