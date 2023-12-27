@@ -1,3 +1,10 @@
+# To start
+  ### run
+  -  `npm i`
+  -  `npm run start`
+# Tests
+  -  `npm run test`
+
 # Client
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.7.
