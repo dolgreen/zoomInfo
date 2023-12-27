@@ -4,6 +4,8 @@ This application is requiring angular  `17.0.7` (dont worry you will download it
 
 First you need to have the right node version which is `20.9.0`.
 
+Im using node package manager (NPM) version `10.1.0`.
+
 The front will run on http://localhost:4200;
 
 The backend will run on  http://localhost:8080;
