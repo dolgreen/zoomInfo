@@ -1,7 +1,7 @@
 # To start
   ### run
   -  `npm i`
-  -  `npm run start | ng serve`
+  -  `npm run start`
 # Tests
   -  `npm run test`
 
