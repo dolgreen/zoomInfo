@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from '../../environment/environment.development';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, tap } from 'rxjs';
+import { Observable, catchError, of, tap } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
@@ -23,15 +23,10 @@ export class UsersService {
 
   getUsers(): Observable<User[]> {
     return this.http.get<User[]>(this.apiUrl).pipe(
-      tap((data: User[]) => {
+      tap(() => {
         console.log('data fetched'),
           catchError(this.handleError('failed to fetch data'));
       })
     );
   }
-
-
-  // getUsers2(): Observable<User[]> {
-  //   return this.apiWrapper("get", this.apiUrl, {} ,{})
-  // }
 }

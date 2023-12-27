@@ -4,6 +4,7 @@ import { UsersService } from './../users.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-users-table',
@@ -23,7 +24,10 @@ export class UsersTableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private usersService: UsersService) {}
+  constructor(
+    private usersService: UsersService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit(): void {
     this.usersService.getUsers().subscribe({
@@ -35,6 +39,11 @@ export class UsersTableComponent implements OnInit {
       },
       error: (error) => {
         this.errorMessage = error.statusText;
+        this.snackBar.open('try checking your internet connection', '', {
+          duration: 2000,
+          horizontalPosition: 'right',
+          verticalPosition: 'top',
+        });
       },
       complete: () => console.log('completed'),
     });
