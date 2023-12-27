@@ -17,17 +17,26 @@ export class UsersTableComponent implements OnInit {
   displayedColumn = ['position', 'name', 'age', 'company'];
   dataSource!: MatTableDataSource<User>;
 
+  // error handling
+  errorMessage: string = '';
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
   constructor(private usersService: UsersService) {}
 
   ngOnInit(): void {
-    this.usersService.getUsers().subscribe((usersData) => {
-      this.filterdUsers = usersData;
-      this.dataSource = new MatTableDataSource(this.filterdUsers);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+    this.usersService.getUsers().subscribe({
+      next: (usersData) => {
+        this.filterdUsers = usersData;
+        this.dataSource = new MatTableDataSource(this.filterdUsers);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      },
+      error: (error) => {
+        this.errorMessage = error.statusText;
+      },
+      complete: () => console.log('completed'),
     });
   }
 
