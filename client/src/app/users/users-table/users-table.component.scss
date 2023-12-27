@@ -5,6 +5,18 @@
   display: flex;
   justify-content: space-evenly;
 }
+.table-container {
+  position: relative;
+}
+table {
+  width: 100%;
+}
+.table-scroller {
+  position: relative;
+  min-height: 200px;
+  max-height: 500px;
+  overflow-y: auto;
+}
 
 .scroll-table {
   // overflow-y: auto;

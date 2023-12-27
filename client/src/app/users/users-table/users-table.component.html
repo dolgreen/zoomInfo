@@ -1,66 +1,36 @@
-<div class="container">
-  <h1 class="text-center text-primary">User Menegment</h1>
-
-  <div class="filters-container">
-    <mat-form-field>
-      <input matInput (keyup)="applyFilter($event)" placeholder="search" />
-    </mat-form-field>
-
-    <mat-form-field class="form-field">
-      <mat-select
-        (selectionChange)="sortUsers($event.value)"
-        placeholder="sort"
-      >
-        <mat-option value="ageLowHigh">Age low high </mat-option>
-        <mat-option value="ageHighLow">Age high low</mat-option>
-        <mat-option value="byName"> a-z</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-    <table class="scroll-table table table-striped table-hover table-bordered">
-      <thead>
-        <tr class="text-center">
-          <th>#</th>
-          <th>name</th>
-          <th>age</th>
-          <th>company</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (user of filterdUsers; track $index ) {
-        <tr class="text-center">
-          <th scope="row">{{ $index + 1 }}</th>
-          <td>{{ user.name }}</td>
-          <td>{{ user.age }}</td>
-          <td>{{ user.company }}</td>
-        </tr>
-        }
-      </tbody>
+<mat-form-field>
+  <mat-label>Filter Table</mat-label>
+  <input matInput placeholder="search" (keyup)="applyFilter($event)" />
+</mat-form-field>
+<div class="example-container mat-elevation-z8">
+  <div class="table-container table-scroller">
+    <table mat-table matSort [dataSource]="dataSource">
+      <ng-container matColumnDef="position">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>#</th>
+        <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>
+        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
+      </ng-container>
+      <ng-container matColumnDef="age">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Age</th>
+        <td mat-cell *matCellDef="let row">{{ row.age }}</td>
+      </ng-container>
+      <ng-container matColumnDef="company">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Company</th>
+        <td mat-cell *matCellDef="let row">{{ row.company }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumn; sticky: true"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumn"></tr>
     </table>
   </div>
-  <div class="d-flex justify-content-between p-2">
-    <ngb-pagination
-      [collectionSize]="collectionSize"
-      [(page)]="page"
-      [pageSize]="pageSize"
-      (pageChange)="refreshUsers()"
-    >
-    </ngb-pagination>
-    <mat-form-field>
-      <mat-select
-        placeholder="Choose table size"
-        [(ngModel)]="pageSize"
-        (ngModelChange)="refreshUsers()"
-      >
-        <mat-option [value]="5">5 </mat-option>
-        <mat-option [value]="10">10</mat-option>
-        <mat-option [value]="15"> 15</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
 
-@if(users.length ) {
-<div></div>
-} @else {
-<h2 class="text-center">no users available</h2>
-}
+  @if (!dataSource) {
+  <h1>no data available</h1>
+  }
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    aria-label="select page size"
+  ></mat-paginator>
+</div>
