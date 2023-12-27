@@ -2,7 +2,7 @@
 
 This application is requiring angular  `17.0.7` (dont worry you will download it later).
 
-First you need to have the right node version which is `20.9.0`.
+Also you need to have the right node version which is `20.9.0`.
 
 Im using node package manager (NPM) version `10.1.0`.
 
