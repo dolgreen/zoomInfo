@@ -2,6 +2,7 @@ import express, { Application } from "express";
 import cors from "cors";
 import bodyParser from "body-parser";
 import getUsers from "./routes/users/getUsers";
+import "./atlasDB"
 
 const jsonParser = bodyParser.json();
 
