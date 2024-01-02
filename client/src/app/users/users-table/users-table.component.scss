@@ -8,13 +8,16 @@
 .table-container {
   position: relative;
 }
+.regular-row:hover {
+  background-color: #e0e0e0;
+}
 table {
   width: 100%;
 }
 .table-scroller {
   position: relative;
-  min-height: 200px;
-  max-height: 500px;
+  min-height: 480px;
+  max-height: 480px;
   overflow-y: auto;
 
   overflow-y: auto;

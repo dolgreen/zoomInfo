@@ -10,10 +10,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-
+import { NameCompany } from '../pipes/nameCompany.pipe';
 
 @NgModule({
-  declarations: [UsersTableComponent],
+  declarations: [UsersTableComponent, NameCompany],
   imports: [
     CommonModule,
     FormsModule,
@@ -23,7 +23,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatInputModule,
     MatSelectModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
   ],
   providers: [],
   exports: [UsersTableComponent],
