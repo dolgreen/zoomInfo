@@ -1,47 +1,52 @@
-<mat-form-field>
-  <mat-label>Filter Table</mat-label>
-  <input matInput placeholder="search" (keyup)="applyFilter($event)" />
-</mat-form-field>
-<div class="example-container mat-elevation-z8">
-  <div class="table-container table-scroller">
-    <table mat-table matSort [dataSource]="dataSource">
-      @for (columnToPresent of displayedColumns; track $index) {
-      <ng-container [matColumnDef]="columnToPresent">
-        <th mat-header-cell *matHeaderCellDef mat-sort-header>
-          {{ columnToPresent | titlecase }}
-        </th>
-        @if (columnToPresent === "position") {
-        <td mat-cell *matCellDef="let row; let i = index">
-          {{ i + 1 + paginator.pageSize * (paginator.pageIndex || 0) }}
-        </td>
-        } @if (columnToPresent === "name(company)") {
-        <td mat-cell *matCellDef="let row; let i = index">
-          {{
-            filterdUsers[i + paginator.pageSize * (paginator.pageIndex || 0)]
-              .company | nameCompany
-          }}
-        </td>
+<div class="container">
+  <mat-form-field>
+    <mat-label>Filter Table</mat-label>
+    <input matInput placeholder="search" (keyup)="applyFilter($event)" />
+  </mat-form-field>
+  <div class="example-container mat-elevation-z8">
+    <div class="table-container table-scroller">
+      <table mat-table matSort [dataSource]="dataSource">
+        @for (columnToPresent of displayedColumns; track $index) {
+        <ng-container [matColumnDef]="columnToPresent">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            {{ columnToPresent | titlecase }}
+          </th>
+          @if (columnToPresent === "position") {
+          <td mat-cell *matCellDef="let row; let i = index">
+            {{ i + 1 + paginator.pageSize * (paginator.pageIndex || 0) }}
+          </td>
+          } @if (columnToPresent === "name(company)") {
+          <td mat-cell *matCellDef="let row; let i = index">
+            {{
+              filterdUsers[i + paginator.pageSize * (paginator.pageIndex || 0)]
+                .company | nameCompany
+            }}
+          </td>
+
+          }
+          <td mat-cell *matCellDef="let row">{{ row[columnToPresent] }}</td>
+        </ng-container>
 
         }
-        <td mat-cell *matCellDef="let row">{{ row[columnToPresent] }}</td>
-      </ng-container>
 
-      }
+        <tr
+          mat-header-row
+          *matHeaderRowDef="displayedColumns; sticky: true"
+        ></tr>
+        <tr
+          class="regular-row"
+          mat-row
+          *matRowDef="let row; columns: displayedColumns"
+        ></tr>
+      </table>
+    </div>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr
-        class="regular-row"
-        mat-row
-        *matRowDef="let row; columns: displayedColumns"
-      ></tr>
-    </table>
+    @if (!dataSource) {
+    <h1 class="text-center text-top">no data available</h1>
+    }
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="select page size"
+    ></mat-paginator>
   </div>
-
-  @if (!dataSource) {
-  <h1 class="text-center text-top">no data available</h1>
-  }
-  <mat-paginator
-    [pageSizeOptions]="[5, 10, 25, 100]"
-    aria-label="select page size"
-  ></mat-paginator>
 </div>

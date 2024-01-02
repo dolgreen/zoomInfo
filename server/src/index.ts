@@ -9,8 +9,11 @@ const jsonParser = bodyParser.json();
 const app: Application = express();
 
 app.use(cors());
-// getting all users from file
+// getting all users
 app.use("/users/getUsers", jsonParser, getUsers);
+// add user
+app.use("/users/addUsers", jsonParser, getUsers);
+
 
 app.listen(8080, () => {
   console.log("listening to port: 8080");
