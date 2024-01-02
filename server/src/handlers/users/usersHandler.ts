@@ -1,16 +1,13 @@
-import fs from "fs";
-import { User } from "../../types/User";
+import User from "../../models/Users";
+// import { IUser } from "../../types/User";
 
-export const handleGetUsers = (): Promise<User[]> => {
-  return new Promise((resolve, reject) => {
-    try {
-      // Read the JSON file
-      const rawData = fs.readFileSync("../db/users.json", "utf-8");
-      const users = JSON.parse(rawData);
-
-      resolve(users);
-    } catch (error) {
-      reject(error);
+export const handleGetUsers = async () => {
+  try {
+    const users = await User.find({});
+    if (users) {
+      return users;
     }
-  });
+  } catch (error) {
+    console.error("Error retrieving users:", error);
+  }
 };
