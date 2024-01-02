@@ -1,8 +1,8 @@
 # Details
 
 At this project I have two options for a server 
-    - express
-    - nest js
+    - `express`
+    - `nest js`
 
 Down below I have an explenation how to activate each of them they both do the same.
 Feel free to try both!
