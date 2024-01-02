@@ -1,3 +1,13 @@
+# Details
+
+At this project I have two option for a server 
+    - express
+    - nest js
+
+Down below i have an explenation how to activate each of them they both do the same.
+Fell free to try both! 
+
+
 # Setup
 
 This application is requiring angular  `17.0.7` (dont worry you will download it later).
@@ -18,14 +28,34 @@ Then you will have to install all of the dependencies for the client and the ser
 
     (All commands are written assuming your terminal is located at the head of the project file tree)
 
-## Server side
+## Server side (express)
+
+### first
+    To use express first make sure that in 'users.service.ts' file you have to change the apiUrl to the express environment
+
+    ` private apiUrl = environment.apiUrl + '/users/getUsers';`
 
     To install all dependencies run:
         - `cd server`
         - `npm i`
 
-    To run your server:
+    To run your express server:
         - `npm run start:dev`
+
+## Server side (nest)
+    To use nest first make sure that in 'users.service.ts' file you have to change the apiUrl to the nest environment
+    `private apiUrl = environmentNest.apiUrl + '/users';`
+    
+
+    Im using nest 10.2.1 globally its important to have 10+  version so everything will work :D
+
+    To install all dependencies run:
+    - `cd nest-server`
+    - npm i
+
+    To run your nest js server:
+     - `npm run start:dev`
+
 
 ## Client side
 
