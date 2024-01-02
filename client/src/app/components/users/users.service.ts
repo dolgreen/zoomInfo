@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../environment/environment.development';
-import { environmentNest } from '../../environment/environment-nest.development';
+import { environment } from '../../../environment/environment.development';
+import { environmentNest } from '../../../environment/environment-nest.development';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, tap } from 'rxjs';
-import { User } from '../models/user.model';
+import { User } from '../../models/user.model';
 
 @Injectable({
   providedIn: 'root',
