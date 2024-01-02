@@ -1,11 +1,12 @@
 node_modules
-package-lock.json
 .env
+dist
 
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
 /dist
+nest-server/dist
 /tmp
 /out-tsc
 /bazel-out
