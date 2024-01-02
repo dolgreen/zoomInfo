@@ -16,7 +16,11 @@ export class UsersTableComponent implements OnInit {
   filterdUsers: User[] = [];
 
   displayedColumn = ['position', 'name', 'age', 'company'];
+  // for testing will rename
+  displayedColumns = ['position', 'name', 'age', 'company', 'name(company)'];
   dataSource!: MatTableDataSource<User>;
+  pageSize: number = 0;
+  pageIndex: number = 0;
 
   // error handling
   errorMessage: string = '';
