@@ -4,8 +4,11 @@ At this project I have two option for a server
     - express
     - nest js
 
-Down below i have an explenation how to activate each of them they both do the same.
+Down below I have an explenation how to activate each of them they both do the same.
 Fell free to try both! 
+
+About the DB:
+    I moved to a mongoDB (atlas) so if you need premission or something doesnt work feel free to contact me.
 
 
 # Setup
@@ -43,6 +46,8 @@ Then you will have to install all of the dependencies for the client and the ser
         - `npm run start:dev`
 
 ## Server side (nest)
+
+### first
     To use nest first make sure that in 'users.service.ts' file you have to change the apiUrl to the nest environment
     `private apiUrl = environmentNest.apiUrl + '/users';`
     
