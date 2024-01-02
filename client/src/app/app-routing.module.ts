@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppComponent } from './app.component';
-import { HomeHeadComponent } from './home/home-head/home-head.component';
-import { UsersTableComponent } from './users/users-table/users-table.component';
-import { AboutPageComponent } from './about/about-page/about-page.component';
+import { HomeHeadComponent } from './components/home/home-head/home-head.component';
+import { UsersTableComponent } from './components/users/users-table/users-table.component';
+import { AboutPageComponent } from './components/about/about-page/about-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },

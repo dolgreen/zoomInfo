@@ -2,8 +2,9 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   name: 'nameCompany',
+  standalone: true,
 })
-export class NameCompany implements PipeTransform {
+export class NameCompanyPipe implements PipeTransform {
   transform(value: string) {
     return 'name(' + value + ')';
   }

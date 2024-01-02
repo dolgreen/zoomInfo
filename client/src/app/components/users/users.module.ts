@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { UsersTableComponent } from './users-table/users-table.component';
 import { FormsModule } from '@angular/forms';
+
+import { UsersTableComponent } from './users-table/users-table.component';
+import { NameCompanyPipe } from '../../pipes/name-company-pipe.pipe';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -10,10 +12,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NameCompany } from '../pipes/nameCompany.pipe';
 
 @NgModule({
-  declarations: [UsersTableComponent, NameCompany],
+  declarations: [UsersTableComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -24,6 +25,7 @@ import { NameCompany } from '../pipes/nameCompany.pipe';
     MatSelectModule,
     MatPaginatorModule,
     MatSnackBarModule,
+    NameCompanyPipe,
   ],
   providers: [],
   exports: [UsersTableComponent],

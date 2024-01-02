@@ -11,20 +11,21 @@
           <th mat-header-cell *matHeaderCellDef mat-sort-header>
             {{ columnToPresent | titlecase }}
           </th>
-          @if (columnToPresent === "position") {
+
+          @switch (columnToPresent) { @case ("position") {
           <td mat-cell *matCellDef="let row; let i = index">
             {{ i + 1 + paginator.pageSize * (paginator.pageIndex || 0) }}
           </td>
-          } @if (columnToPresent === "name(company)") {
+          } @case ("name(company)") {
           <td mat-cell *matCellDef="let row; let i = index">
             {{
               filterdUsers[i + paginator.pageSize * (paginator.pageIndex || 0)]
                 .company | nameCompany
             }}
           </td>
-
-          }
+          } @default {
           <td mat-cell *matCellDef="let row">{{ row[columnToPresent] }}</td>
+          } }
         </ng-container>
 
         }
